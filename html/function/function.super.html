@@ -11,10 +11,76 @@
             return func(x) + func(y);
         }
         function increase(num) {
-            return num +10;
+            return num + 10;
         }
 
-        window.alert(add(1,2,increase));
+        window.alert(add(1, 2, increase));
+
+        /********************************* map() **********************************/
+        //map函数是定义在Array上的, 所以只有数组能够调用
+        var arr = [1, 2, 3, 4, 5];
+        function pow(x) {
+            return x * x;
+        }
+
+        var arrPowed = arr.map(pow);//map方法返回的是一个新的数组
+
+        arr.forEach(function (elem, index) {
+            window.alert(index + " : " + elem);
+        });//1,2,3,4,5
+
+        arrPowed.forEach(function (elem, index) {
+            window.alert(index + " : " + elem);
+        });//1,4,9,16,25
+
+        /********************************* reduce() ***********************************/
+            //reduce()方法返回的是一个数值, 并且作为参数的方法必须接收两个参数;
+        arr = [1, 2, 3, 4, 5];
+        var plus = function (a, b) {
+            return a + b;
+        };
+
+        var result = arr.reduce(plus);
+        window.alert(result);
+
+        /*********************************** filter()**********************************/
+            //filter的作用是通过某种原则过滤掉数组的中的某些元素
+            //参数方法必须接受一个参数, 并且返回值是布尔类型
+            //filter方法返回的也是一个全新的数组, 并不会对原数组进行修改
+        arr = [1, 2, 3, 4, 5];
+
+        var filter = function (x) {
+            return x % 2 === 0;
+        };
+
+        arr.filter(filter).forEach(function (elem, index) {
+            window.alert(index + " : " + elem);
+        });
+
+        arr.forEach(function (elem, index) {
+            window.alert(index + " : " + elem);
+        });
+
+
+        /********************************* sort() ********************************/
+            //sort() 通过某种方式进行排序
+        /******************sort() 会对原数组进行修改!!!!********************/
+
+        arr = [20, 10, 4, 8, 30];
+
+        arr.sort(function (x, y) {
+            if (x > y)
+                return 1;
+            if (x === y)
+                return 0;
+            else return -1;
+        }).forEach(function(ele, index){
+            window.alert(index+" : "+ele);
+        });
+
+        arr.forEach(function(ele,index){
+            window.alert(index+" : "+ele);
+        }); //sort()会对原数组进行修改
 
 
     </script>
