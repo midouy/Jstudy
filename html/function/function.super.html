@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>高阶函数</title>
+    <script type="text/javascript">
+
+        /********************************* 高阶函数的定义 **********************************/
+        //高阶函数就是已函数作为参数的函数
+        function add(x, y, func) {//已另一个函数作为参数, 这个函数就称为高阶函数
+            return func(x) + func(y);
+        }
+        function increase(num) {
+            return num +10;
+        }
+
+        window.alert(add(1,2,increase));
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
