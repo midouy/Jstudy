@@ -18,9 +18,47 @@
         window.alert(xiaoming.age());
 
         /****************************** this 指针的使用 ********************************/
+        //指向的是调用此函数对象
+        //小心使用...有坑
 
+        /***************************apply() , call() 控制 this 的指向****************************/
+        //调用apply() 和 call() 的应该是一个方法, 用来对方法指定调用的对象和参数列表
+        //他们的区别在于参数列表, apply要求参数列表以数组形式传递, 而call 要求依次传递(不必封装成数组)
+        //其实很类似于Java反射的方法对象调用
+        var carol  = {
+            name : 'carol',
+            birth : 1989
+        };
+        var getAge = function () {
+            return new Date().getFullYear()-this.birth;
+        };
+        carol.age = getAge;
 
+        window.alert(getAge());
+        window.alert(carol.age());
+        window.alert(getAge.apply(carol,[]));
+        window.alert(getAge.call(carol));
 
+        /************************************ 装饰器 ************************************/
+        //apply函数使得JS的方法调用更加动态化
+        //这使得JS的具有对任意函数进行动态操作的能力, 称之为装饰器
+        //例如 : 改变系统函数parseInt(), 使其增加一个计数器的功能
+
+        var count = 0;
+        var oldparseInt = window.parseInt;
+
+        window.parseInt = function(){
+            count++;
+            return oldparseInt.apply(window,arguments);
+        };
+        //测试功能
+
+        parseInt('20');
+        parseInt('20');
+        parseInt('20');
+        parseInt('20');
+
+        window.alert(count);//4
 
     </script>
 </head>
