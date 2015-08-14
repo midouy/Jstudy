@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>容器 Map & Set </title>
+    <script type="text/javascript">
+
+        /************************** Map **************************/
+        /*************Map 和 Set 是ES6新添加的标准****************/
+        //Map就是键值对容器, 具有高查询速度, 并且可以使用任意类型当做键
+        //这一点就弥补了对象只能用字符串作为键的不足
+
+        //Map的定义
+        //其实通过Map类(其实JS是没有类的概念的)的构造函数, 并传递一个二维数组的形式
+        //构造函数传递参数的形式比较复杂, 还不如
+        var map = new Map([['mike',90],['bob',83],['lucy',80]]);
+
+        //Map的操作
+        window.alert(map.get('mike')); //90
+        map.set('carol',100);
+        window.alert(map.get('carol')); // 100
+        map.set('carol',200);
+        window.alert(map.get('carol')); //200, 对一个键多次设置会顶替之前的值
+
+        //Map的删除操作
+        map.delete('carol');//删除carol的键值对
+        //循环set
+        map.set(1,100).set(2,20000); //set函数会返回map本身
+
+        /***************************** Set ******************************/
+        //Set是跟Map很类似的东西, 只不过它只是存储键(并且键是唯一的)
+
+        //Set的定义
+        //构造函数需要传递一个一维数组(重复的元素只会存储一个)
+        var set1 = new Set([1,1,1,1,1,2,'x']);
+        for(var ele of set1)
+        {
+            window.alert(ele); //取出来的是键, 并且只有一个1
+        }// 1, 2, x
+
+        //Set的操作
+        set1.add('w');
+        set1.delete('w');
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

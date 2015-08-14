@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字符串</title>
+
+    <script type="text/javascript">
+
+        var string1 = "abcdefg";
+
+        window.alert(string1[0]);//a
+        window.alert(string1[20]);// undefined , 超出范围不会报错, 一律返回undefined
+
+        //JS的字符串也是不可变的, 通过索引进行赋值, 不会改变的字符串的值
+
+        var string2 = "Hello";
+        string2[0] = "x";
+        window.alert(string2); //依然是Hello
+
+        //常见操作
+        window.alert(string2.toUpperCase); HELLO
+        window.alert(string2.toLowerCase); // hello
+        window.alert(string2.indexOf("e")); // 1 , 查询位置
+        window.alert(string2.substring(0,4)); //Hell 包含头不包含尾
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

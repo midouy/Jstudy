@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="imports/jQuery.js"></script>
+    <script>
+
+        $(document).ready(function(){
+            $("#hideP").click(function(){
+                $("p").hide();
+            });
+        });
+
+        $(document).ready(function(){
+            $("#showP").click(function(){
+                $("p").show();
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <p id="test">我是一个段落!!!</p>
+    <button id="hideP">隐藏</button>
+    <button id="showP">显示</button>
+</body>
+</html>

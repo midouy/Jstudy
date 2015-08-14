@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组</title>
+
+    <script type="text/javascript">
+
+        var arr1 = [1, 2, 3, 'Hello', true];
+        window.alert(arr1.length); // 5, 数组长度
+
+        arr1.length = 6; //直接改变数组长度, 未定义的索引会被赋值为undefined
+        window.alert(arr1); // [1,2,3,'Hello',true, undefined]
+
+        arr1.length = 2; //直接缩短数组长度, 只保留前两个元素
+        window.alert(arr1); // [1,2] 其余元素全部抛弃
+
+        /*************************** 常见操作 ****************************/
+
+        //indexOf()
+        var arr2 = [10, 20, '30', 'xyz'];
+        window.alert(arr2.indexOf(10)); //0
+        window.alert(arr2.indexOf(30)); //-1, 未找到数值30
+        window.alert(arr2.indexOf('30')); //2
+
+        //slice() 子数组
+        var arr3 = ['A', 'B', 'C', 'D'];
+        window.alert(arr3.slice(0, 3)); // ['A','B','C'] 包含头不包含尾
+        window.alert(arr3.slice()); // 如果不传递参数, 就会获取这个数组的副本(是一个全新的数组)
+        window.alert(arr3.slice() === arr3); //false
+
+        /***************** JS的数组是可以当做栈来使用的 ****************/
+
+        //push() and pop()
+        var arr4 = [1, 2];
+        window.alert(arr4.push('A', 'B')); //4, 这个函数返回的是操作后数组的长度
+        window.alert(arr4); //1,2,'A','B'
+
+        window.alert(arr4.pop()) // 'B', 返回的是出栈的元素
+        window.alert(arr4); //1,2,'A'
+
+        //unshift() and shift 类似于push和pop, 只不错是从数组头进行操作
+        var arr5 = [1, 2];
+        window.alert(arr5.unshift('A', 'B')); //4, 返回数组长度
+        window.alert(arr5); // 'A','B' ,1,2
+
+        window.alert(arr5.shift()); // 'A' //返回出数组的元素
+        window.alert(arr5); //'B', 1, 2
+
+        /************************* 一些其他的操作 *************************/
+
+        //sort()排序
+        var arr6 = ['B', 'A', 'C'];
+        window.alert(arr6.sort()); //'A', 'B', 'C'对数组进行排序, 并返回排序后的数组
+
+        //reverse() 数组翻转
+        var arr7 = [1, 2, 3];
+        window.alert(arr7.reverse()); //对数组元素进行翻转, 并返回翻转后的数组
+
+        //splice () 数组的万能修改方法
+        //arr.splice(start, count, elem1, elem2, elem3)
+        //从start索引开始(包括start上的元素), 删除count个元素, 并把elem1, elem2, elem3, 依次添加进去
+        var arr8 = [1, 2, 3, 4, 5];
+        window.alert(arr8.splice(1, 2, 'A', 'B', 'C')); //2,3 此函数的返回值是删除掉的元素组成的数组
+        window.alert(arr8); //1, A, B,C,4,5
+
+        //concat() 数组连接
+        //arr.concat(arrx), 将arr和 arrx连接, 并返回一个新的数组(对原数组不做修改)
+        var arr9 = [1, 2, 3];
+        var arrx = ['A', 'B'];
+        var arrAdded = arr9.concat(arrx);
+        window.alert(arrAdded); //1,2,3,A,B
+        window.alert(arr9); //1,2,3
+        //如果concat连接的数组, 则会被拆开进行连接
+        window.alert(arr9.concat(1,2,[4,5]));//1,2,3,1,2,4,5
+
+        //join() 将数组元素通过某些字符串连接起来, 并返回一个字符串
+        var arr10 = [1, 2,3,4,5];
+        window.alert(arr10.join('-')); //1-2-3-4-5
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

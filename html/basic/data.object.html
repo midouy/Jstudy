@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象</title>
+
+    <script type="text/javascript">
+
+        /**************** 对象的定义 ****************/
+        var xiaoming =  {
+            name : 'xiaoming',
+            age: 20,
+            skills: ['java','JS'],
+            sayHi : function(){
+                window.alert("Hi I'm "+this.name);
+            },
+            'middle-school' : "NO.1 Middle School"
+            // '-'不是有效的变量名, 所有无效变量名的属性都要用单引号, 并且只能用object['field']的方式访问
+            // xiaoming['middle-school']
+            // 小明的name, age等属性虽然没有写成字符串的形式, 但是实际上这些属性名是被当做字符串进行处理的
+            // 这就是为什么对象的属性都可以通过object['prop']的形式进行访问, 也就是说Js 对象的属性名都是字符串, 但是值可以是任意类型的
+            // 但是使用其他类型作为键也是很有必要的, 所以JS提供了Map类型来解决这一问题
+        };
+
+        /******************* 对象属性的访问 ********************/
+        //两种方式 object.prop 和 object['prop'], 推荐第一种
+
+        window.alert(xiaoming.name);
+        window.alert(xiaoming['name']);
+
+        xiaoming.sayHi();
+        xiaoming['sayHi']();
+
+        /********************* 对象属性的操作 ********************/
+        // 添加属性
+        xiaoming.birth = '1989-10-14';
+        window.alert(xiaoming.birth);
+
+        //删除属性
+        delete xiaoming.birth;
+        window.alert(xiaoming.birth); //undefined, 属性已经被删除了
+
+        //查询属性是否存在
+        // 'prop' in object 的形式, (这种查询会包括继承来的属性)
+        window.alert('name' in xiaoming);//true 存在这个属性
+        window.alert('birth' in xiaoming); // false 不存在这个属性
+        window.alert('toString' in xiaoming);// true, JS的所有对象都会继承object, 而object具有toString属性(其实是一个方法)
+
+        //判断对象本身是否具备某一项属性(不包括继承来的属性)
+        //hasOwnProperty()
+        window.alert(xiaoming.hasOwnProperty('toString')); // false
+        window.alert(xiaoming.hasOwnProperty('name')); //true
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

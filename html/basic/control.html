@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS 程序控制语句</title>
+
+    <script type="text/javascript">
+
+        /*************************  if - else *************************/
+        //if-else和Java只有一点不同, 就是对if的判断并不一定要求是布尔型表达式
+
+        function trueOrFalse(tag)
+        {
+            if(!tag)
+            {
+                window.alert(tag + " 会被当做 : " + false);
+            }
+            else
+            {
+                window.alert(tag + " 会被当做 : " + true);
+            }
+        }
+
+        trueOrFalse(null);
+        trueOrFalse(undefined);
+        trueOrFalse('');
+        trueOrFalse(0);
+        trueOrFalse(NaN);
+        trueOrFalse(false);
+        trueOrFalse({name : 'xiaoming'}); //true, 对象会被判断为true
+
+        //除了上述的五个值, 其他值一律被视作true
+
+        /*********************** for : 没有区别 *************************/
+        //JS中的for循环同样也可以使用break 和continue进行控制;
+
+        /*********************** for-in *************************/
+        //遍历对象的属性
+        var xiaoming =  {
+            name : 'xiaoming',
+            age: 20,
+            skills: ['java','JS'],
+            sayHi : function(){
+                window.alert("Hi I'm "+this.name);
+            },
+            'middle-school' : "NO.1 Middle School"
+        };
+
+        for(var prop in xiaoming)
+        {
+            window.alert("prop name = "+prop); // for-in 循环取出来的值其实是属性的名字(而且是字符串类型)
+            window.alert("prop value = "+xiaoming[prop]);
+        }
+
+        //遍历数组内容
+
+        var arr = ['a','b','c','d'];
+        for(var index in arr)
+        {
+            window.alert("index : "+index); // for-in 循环取出来的值其实是属性的名字(而且是字符串类型)
+            window.alert("value in index : "+arr[index]); //这就证明了数组是可以使用arr['1']这种形式进行访问的.
+        }
+        window.alert(arr['1']);//b, 这样也是可以进行访问的;
+        //数组的对象并没有明显的区别, 只是添加了以数字为名称的属性
+        arr.x = 10; //数组也是可以拥有属性的
+        arr.sayHi = function()
+        {
+            window.alert("Hi");
+        }
+        alert(arr.x); // 10;
+        arr.sayHi(); // Hi
+
+        /*******************************while ,do - while***********************************/
+        //和Java没有区别
+
+    </script>
+</head>
+<body>
+
+
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基本数据类型</title>
+
+    <script type="text/javascript">
+
+        /******************************* 基本数据类型 *******************************/
+
+        //Number 类型;
+        var number1 = 123;
+        var number2 = 0.456;
+        var number3 = 1.23e4;
+        var number4 = -99;
+        var number5 = Infinity;
+        var number6 = NaN;
+
+        //字符串类型
+        var string1 = "abc";
+        var string2 = 'abc';
+        window.alert(string1 == string2); //true;
+        window.alert(string1 === string2); // true
+
+        //布尔类型
+        var bool1 = true;
+        var bool2 = false;
+
+        //JS是动态语言, 对变量不会有数据类型的限制,
+        var variable = 123;
+        variable = "abc";
+
+        /******************************** 数组与对象 ********************************/
+
+        //数组
+        var arr1 = [1, 2, 3, true, Infinity, NaN, "hello"]; //并没有类型的限制
+        var arr2 = new Array(1, 2, 3, "hello"); // 也可以使用这种方式创建数组, 但是不建议这样做.
+
+        //对象
+        var object1 = {
+            name: "bob",
+            age: 20,
+            skills: ['js', 'Java'],
+            city: 'beijing'
+        };
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

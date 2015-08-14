@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>容器的遍历问题</title>
+
+    <script type="text/javascript">
+
+        var  a = new Array(1,2,3,4,5);
+        var  s = new Set([1,2,3,4,5]);
+        var m = new Map([[1,10],[2,20],[3,30],[4,40],[5,50]]);
+
+
+        /********************* for - in **********************/
+
+//        for(var index in a)
+//        {
+//            window.alert(index + " : " +a[index]);
+//        }
+        //for - in 只能用来遍历对象和数组, 不能用来遍历map 和 set
+
+        /********************* for - of **********************/
+        //直接取出来的元素, 不可以遍历对象
+        for(var index of a)
+        {
+            window.alert(index); //1,2,3,4,5
+        }
+        for(var index of s)
+        {
+            window.alert(index); //1,2,3,4,5
+        }
+        for(var index of m)
+        //对于map来讲, 每次取出来的是一个长度为2的数组, 即一个键值对, 第一个是键, 第二个是值
+        {
+            window.alert(index[0]+" : "+index[1]);
+        }
+
+        /********************* forEach() **********************/
+        //对于数组, map 和 set 的遍历, forEach()方法是更加推荐
+
+        a.forEach(function(element,index,array){
+           window.alert(index+" : "+element);
+        });
+
+        s.forEach(function(element,sx){
+            window.alert(element);
+        });
+
+        m.forEach(function(value,key,map){
+           window.alert(key+" : "+value+" :: "+map.get(1));//map代表了呗遍历的map
+        });
+        //三种参数不一定都要写, 如果不关注则可以不写, 这主要是跟每种容器的forEach()函数的实现过程有关.
+        //当然也可以忽略这种特性, 只要不使用不关注的内容就可以了
+
+        //从JS设计开始, 作者其实是想要淡化数组和对象的区别, 但是随着JS的使用, 发现这种淡化行为使得JS好多内容变得模糊
+        //于是伴随着Map和Set的引入, 数组和对象的区别渐渐变得清晰, 而一些不清晰的使用方式渐渐不被推荐
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

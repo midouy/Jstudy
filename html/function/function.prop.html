@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象的属性方法</title>
+    <script type="text/javascript">
+
+        /**************************** 带方法的对象的定义 *************************/
+        var xiaoming = {
+            name: 'xiaoming',
+            birth: 1989,
+            age: function () {
+                return new Date().getFullYear() - this.birth;
+            }
+        };
+        //两种调用方式都没有问题
+        window.alert(xiaoming['age']());
+        window.alert(xiaoming.age());
+
+        /****************************** this 指针的使用 ********************************/
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

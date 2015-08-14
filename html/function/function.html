@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS 函数</title>
+    <script type="text/javascript">
+
+        /************************** 函数的定义 *************************/
+
+        function abs(num) {
+            if (num > 0)
+                return num;
+            else
+                return num * -1;
+        }
+
+        var absx = function (num) {
+            if (num > 0)
+                return num;
+            else
+                return -num;
+        };
+
+        window.alert(abs(-10));
+        window.alert(absx(-10));
+
+        /************************* 函数参数的传递 ****************************/
+        //JS的参数列表其实被默认的封装在了一个命名为arguments的数组里
+
+        function plus(a, b) {
+            if (typeof a == "number" && typeof b == "number") { //判断是否为数字类型
+                return a + b;
+            }
+        }
+
+        function plusx(a, b) {
+            if (typeof a == "number" && typeof b == 'number') {
+                return arguments[0] + arguments[1]; //所有传递进来的参数都会被封装到一个数组里
+            }
+        }
+        window.alert(plus(10, 20));
+        window.alert(plusx(10, 20));
+
+        var xiaoming = {
+            name: "xiaoming",
+            age: 20
+        };
+
+        function addBirth(per) {
+            per.birth = '19891014';
+            //这里是类似于Java的, JS函数参数的传递其实也是引用的传递, 不会创建新的对象;
+        }
+        addBirth(xiaoming);
+        window.alert(xiaoming.birth);
+
+        var xiaogang = xiaoming;
+        //此处新建还是引用, 并没有新建一个对象;
+        xiaoming.birth = '20000000';
+        window.alert(xiaogang.birth);
+
+        /**************************** 变量的作用域 **************************/
+        function show() {
+            for (var i = 0; i < 10; i++) {
+                window.alert(i);
+            }
+            window.alert(" i = " + i);//这里是可以访问的!
+
+        }
+        show();
+
+        /***************************** 常量的声明 *****************************/
+        'use strict';
+        const PI = 3.14;
+        //PI = 20; // 常量是不能被赋值的!
+        window.alert(PI); //3.14, 不能对常量进行赋值!
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
