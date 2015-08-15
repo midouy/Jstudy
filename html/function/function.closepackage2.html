@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包第二部分</title>
+
+    <script type="text/javascript">
+
+        /*************** 全局变量 ***************/
+        //如果不是var进行声明, 那么这个变量就是全局变量(属于window的属性)
+        a = 10;
+
+        function show(ele)
+        {
+            //即使是函数内部进行的声明, 如果没有var, 那么它也将成为一个全局变量
+            //但是这个函数必须运行, 不然这个变量也是未定义的.
+            x = 20;
+            window.alert(ele);
+        }
+
+        show("Hello");
+
+        window.alert(a);
+        window.alert(x);
+
+        /***************** 全局变量的生命周期 ****************/
+        //全局变量的生命周期是全局性的, 即整个JS程序
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
