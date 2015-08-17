@@ -3,6 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <title>标准对象</title>
+
+    <script type="text/javascript">
+
+        /*********************** 标准对象 - 数据类型*************************/
+        //typeof 是无法区别null, 对象, 和 数组的
+        window.alert(typeof 123);//number
+        window.alert(typeof NaN);//number
+        window.alert(typeof "abc");//string
+        window.alert(typeof true);//boolean
+        window.alert(typeof undefined);//undefined
+        window.alert(typeof Math.abs);//function
+        window.alert(typeof null);//object
+        window.alert(typeof []);//object
+        window.alert(typeof {});//object
+
+        window.alert(typeof (typeof 123));//string
+        //typeof 获取到的字符串
+
+        /********************** 包装类(基本数据类型封装) ************************/
+        //JS是不推荐使用封装类的, JS的封装类的目的在于处理基本类型与其他对象之间的操作兼容性
+        var n = new Number(123);
+        var s = new String("abc");
+        var b = new Boolean(true);
+
+        window.alert(new Number(123)===n);//false
+
+        /********************** 关于减号 ***********************/
+        //当减号和字符串进行运算时, 字符串会被转换成数字
+        window.alert(123.45-"0.45"); //123
+
+        /***************************** 一些原则 *****************************/
+        /*
+        * 使用 parseInt() 和 parseFloat() 转换成 数字
+        *
+        * 使用 String() 转换到string类型, 或者使用toString()
+        *
+        * typeof 进行 string number boolean function 和 undefined的比较
+        *
+        * 判断Array 用isArray()
+        *
+        * 判断null 用 myVar===null
+        *
+        * 判断全局变量是否存在使用typeof window.myVar === 'undefined'
+        *
+        * 判断函数内部变量是否存在 typeof myVar === 'undefined'
+        *
+        * */
+
+        //并不是所有变量都能使用toString(), null 和 undefined 是没有toString()方法的
+
+        /*******************************************************/
+
+        window.alert(123..toString());//基本类型想要使用toString 方法, 使用两个点!!!!
+        window.alert((123).toString()); //基本类型想要使用toString 方法, 或者用括号!!!!
+        //这样做的原因是JS解释器企图将一个点作为数字的小数点进行解释
+
+
+    </script>
 </head>
 <body>
 
