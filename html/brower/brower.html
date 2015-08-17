@@ -21,6 +21,33 @@
         /*********************** screen ***********************/
 
         window.alert('Screen size = ' + screen.width + ' x ' + screen.height);
+
+        /************************* location *********************/
+        //当前页面的URl信息,
+        var URLString = location.protocol+'\n'+
+        location.host+'\n'+
+        location.port+'\n'+
+        location.pathname+'\n'+
+        location.search+'\n'+
+        location.hash; // 'TOP'
+
+        window.alert(URLString);
+
+        /*********************** document **********************/
+        //document就是整个DOM树的根
+        document.title = '努力学习JS!';
+
+        //document有一个cookie属性, 可以获取当前页的cookie
+        //Cookie是由服务器发送的key-value标示符。因为HTTP协议是无状态的，
+        // 但是服务器要区分到底是哪个用户发过来的请求，就可以用Cookie来区分。
+        // 当一个用户成功登录后，服务器发送一个Cookie给浏览器，例如user=ABC123XYZ(加密的字符串)...，
+        // 此后，浏览器访问该网站时，会在请求头附上这个Cookie，服务器根据Cookie即可区分出用户。
+        ///Cookie还可以存储网站的一些设置，例如，页面显示的语言等等。
+
+
+
+
+
     </script>
 </head>
 <body>
