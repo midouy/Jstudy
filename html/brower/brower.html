@@ -2,7 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>浏览器对象</title>
+
+    <script type="text/javascript">
+
+        'use strict';
+
+        /********************** window ***********************/
+        window.alert(window.innerHeight+" : "+window.innerWidth);
+
+
+        /********************** navigator *********************/
+        window.alert(
+                'appName :'+navigator.appName+'\n'+
+                'language : '+navigator.language+'\n'
+        );
+
+        /*********************** screen ***********************/
+
+        window.alert('Screen size = ' + screen.width + ' x ' + screen.height);
+    </script>
 </head>
 <body>
 
