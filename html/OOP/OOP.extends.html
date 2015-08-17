@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型继承</title>
+    <script type="text/javascript">
+
+        /**************************** 原型继承 ****************************/
+        //关于 var obj = new Student(); 会进行的几个动作
+        /*
+        * 1. 运行Student()函数, 对这个新的对象设置一些属性
+        *
+        * 2. 运行obj.constructor = Student //为这对象的constructor赋值
+        *
+        * 3. 运行obj.__proto__ = Student.prototype; //为这个对象的构造原型链
+        *
+        * */
+        function Parent(name){
+            this.name =  name;
+        }
+
+        function Child(name){
+            Parent.call(this,name);
+        }
+
+        function extendss(Parent, Child){
+            var F = function(){};
+            F.prototype = Parent.prototype;
+            Child.prototype = new F();
+            Child.prototype.constructor = Child;
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

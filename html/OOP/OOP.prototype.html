@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型</title>
+
+    <script type="text/javascript">
+
+//        window.alert(typeof Array);
+//        window.alert(typeof Object);
+//
+//        var  x  =  Array.prototype;
+//        window.alert(typeof x);
+//
+//        var xx = new Array();
+
+        /************************* 创建对象与原型链 *****************************/
+
+        function Student(name){
+            this.name = name ;
+            this.say = function(){
+                window.alert("Hi I'm "+this.name);
+            }
+        }
+
+        var ming = new Student("xiaoming");
+        var hong = new Student("xiaohong");
+
+        ming.say();
+        hong.say();
+
+        window.alert(typeof  ming.constructor);
+        window.alert(typeof ming.prototype);
+        //undefined, 对象是不具备原型属性的, 原型是隶属于方法的属性;
+        //对象只具有原型链, 原型链上的都是对象
+        //原型就是依据方法所构造的一个基本对象
+        window.alert(ming.constructor===Student.prototype.constructor);//true
+        //对象的constructor属性指向是他的构造函数本身
+        window.alert(ming.constructor===Student);//true
+
+        window.alert(ming.say==hong.say);//false
+
+        //上述对象创建方法使得Student为原型的所有对象都具有不同say()方法,
+        //这是十分浪费内存的, 可以使用通过修改原型的方法, 使的所有对象公用一个say()方法
+
+        function Person(name){
+            this.name = name;
+        }
+        Person.prototype.say = function(){
+            window.alert("Hi I'm "+this.name);
+        };//所有Person创建的对象的第一层原型都是Person.prototype
+        //这就使得他们的say方法都是一样的
+
+        var P1 = new Person("xxx");
+        var P2 = new Person("yyy");
+
+        window.alert(P1.say===P2.say);//true
+
+        /*****************************关于prototype属性 和 __proto__***************************/
+
+        var a = ming.__proto__;
+        //对象不具备prototype属性, 只用__proto__属性
+        //prototype属性只有构造方法才会具备;
+        window.alert(ming.constructor.prototype===Student.prototype);
+        window.alert(typeof a);
+        window.alert(ming.__proto__===Student.prototype);//true
+    </script>
+</head>
+<body>
+
+</body>
+</html>

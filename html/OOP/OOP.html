@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS面向对象编程</title>
+
+    <script type="text/javascript">
+
+        /************ JS 原型的概念 ***************/
+        var student = {
+            name : "student",
+            age : 20,
+            say : function(){
+                window.alert("Hi i'm "+this.name);
+            }
+        };
+
+
+        var xiaoming = {
+                name : "xiaoming"
+                };
+        xiaoming.__proto__ = student;
+
+        window.alert(xiaoming.name);
+        xiaoming.say();
+
+        var bird = {
+          fly : function(){
+              window.alert("flying!");
+          }
+        };
+
+        xiaoming.__proto__ = bird;
+
+        xiaoming.fly();
+
+        /****************** 对象的创建 *****************/
+
+        // JS原型对象创建是不推荐使用__proto__属性的, 应该封装成一个函数
+        // Object.create(O)方法让我们可以以O为原型创建一个对象
+
+        function createStudent(name){
+            var s = Object.create(student);
+            s.name = name;
+            return s ;
+        }//定义一个以student为原型的构造器
+
+        var xiaohong = createStudent('xiaohong');
+
+        for(var x in xiaohong)
+        {
+            window.alert(xiaohong[x]);
+        }
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
