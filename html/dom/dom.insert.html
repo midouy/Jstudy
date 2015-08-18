@@ -2,9 +2,114 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>DOM-插入</title>
+
 </head>
 <body>
 
+    <p id="js">JavaScript</p>
+    <div id="list">
+        <p id="java">Java</p>
+        <p id="python">Python</p>
+        <p id="scheme">Scheme</p>
+    </div>
+    <div id = "emptyDiv">
+
+    </div>
+
+    <ol id="test-list">
+        <li class="lang">Scheme</li>
+        <li class="lang">JavaScript</li>
+        <li class="lang">Python</li>
+        <li class="lang">Ruby</li>
+        <li class="lang">Haskell</li>
+    </ol>
+
+    <script type="text/javascript">
+
+        /******************** 为空节点插入一个子标签 **********************/
+        document.getElementById("emptyDiv").innerHTML='<p>CPP</p>';
+
+        /********************* 为非空节点插入一个子标签 ***********************/
+        //移动一个已存在的标签(删除原有的标签)
+        document.getElementById("list").appendChild(document.getElementById("js"));
+
+        //重新创建一个子标签并插入
+        var ch = document.createElement("p");
+        ch.innerHTML = "Lua";
+        ch.id = "lua";
+        document.getElementById("list").appendChild(ch);
+
+        /************************** 在指定位置上插入节点 *************************/
+        //parentElement.insertBefore(newElement, referenceElement);
+        //如 : 在Python前插入Ruby子标签
+
+        var ruby = document.createElement("p");
+        ruby.innerHTML = "Ruby";
+        ruby.id = "ruby";
+        document.getElementById("list").insertBefore(ruby,document.getElementById("python"));
+
+        /************************** 对标签进行排序 *************************/
+
+        function showArray(arr)
+        {
+            var result = '';
+            for(var xx = 0; xx<arr.length;xx++)
+            {
+                result+=arr[xx].innerHTML+",  ";
+            }
+            return result;
+        }
+
+        var lis = document.getElementsByTagName("li");
+        var ol = document.getElementById("test-list");
+
+
+        alert(showArray(lis));
+
+//        for(var i =0; i<lis.length-1;i++)
+//        {
+//            for(var j=0 ; j <lis.length-i-1;j++)
+//            {
+//                if(lis[j].innerHTML>lis[j+1].innerHTML)
+//                {
+//                    window.alert("mark!");
+//                    var temp = lis[j];
+//                    lis[j]=lis[j+1];
+//                    lis[j+1]=temp;
+//                    alert(showArray(lis));
+//                }
+//            }
+//
+//        }
+        //alert(lis.constructor);
+
+        //alert(HTMLCollection.prototype.constructor);
+//
+//        for(var con = lis.constructor; con!=Object;)
+//        {
+//            alert(con);
+//            con = con.constructor.prototype.constructor;
+//        }
+//        alert(HTMLCollection.prototype.constructor.prototype.constructor===Function);
+//
+//        lis.sort(function(a,b){
+//            var A = a.innerHTML.toUpperCase();
+//            var B = b.innerHTML.toUpperCase();
+//            if(A>B)
+//                return 1;
+//            else if(A<B)
+//                return -1;
+//            else
+//                return 0;
+//        });
+//
+//        alert(showArray(lis));
+
+
+
+
+
+    </script>
 </body>
 </html>

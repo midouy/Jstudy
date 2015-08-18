@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM-删除</title>
+</head>
+<body>
+
+    <div id="parent">
+        <p>First</p>
+        <p>Second</p>
+        <p id="to-be-removed">delete ME!</p>
+    </div>
+
+
+    <script type="text/javascript">
+
+        /*********************** DOM 删除 ***********************/
+        // 1. 获取父节点
+        // 2. 获取子节点
+        // 3. parent.removeChild(child);
+        var parent = document.getElementById("parent");
+        var child = document.getElementById("to-be-removed");
+        parent.removeChild(child);
+        //这一步只是将子节点从文档上删除, 但是内存中仍然保存有这个节点
+
+
+    </script>
+
+</body>
+</html>
