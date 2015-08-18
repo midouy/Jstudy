@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM-更新</title>
+</head>
+<body>
+
+    <!-- HTML结构 -->
+    <div id="test-div">
+        <p id="test-js">javascript</p>
+
+        <p>Java</p>
+    </div>
+
+    <script type="text/javascript">
+
+        var js = document.getElementById("test-js");
+        js.innerHTML = "JavaScript";
+
+        js.style.fontWeight = 'bold';
+        js.style.color = 'red';
+
+
+
+    </script>
+
+</body>
+</html>
