@@ -9,17 +9,19 @@
         'use strict';
 
         /********************** window ***********************/
+        //全局作用域, 浏览器窗口
         window.alert(window.innerHeight+" : "+window.innerWidth);
 
 
         /********************** navigator *********************/
+        //浏览器信息
         window.alert(
                 'appName :'+navigator.appName+'\n'+
                 'language : '+navigator.language+'\n'
         );
 
         /*********************** screen ***********************/
-
+        //包含屏幕信息
         window.alert('Screen size = ' + screen.width + ' x ' + screen.height);
 
         /************************* location *********************/
@@ -43,6 +45,8 @@
         // 当一个用户成功登录后，服务器发送一个Cookie给浏览器，例如user=ABC123XYZ(加密的字符串)...，
         // 此后，浏览器访问该网站时，会在请求头附上这个Cookie，服务器根据Cookie即可区分出用户。
         ///Cookie还可以存储网站的一些设置，例如，页面显示的语言等等。
+
+        window.alert(typeof document.cookie);
 
 
 
