@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单提交2</title>
+    <script type="text/javascript" src="../jQuery/imports/jQuery.js"></script>
+</head>
+<body>
+
+<div>
+    <form id="test-form" onsubmit="return check()">
+
+        <input type="text" id = "test" name="say">
+        <button type="submit">submit</button>
+
+    </form>
+
+
+</div>
+
+<script type="text/javascript">
+
+    //浏览器默认点击<button type="submit">时提交表单，或者用户在最后一个输入框按回车键。
+    //因此，第二种方式是响应<form>本身的onsubmit事件，在提交form时作修改：
+    function check(){
+        var form = document.getElementById("test");
+        form.value = "hahaha";
+        return true;
+    }
+
+//    注意要return true来告诉浏览器继续提交，如果return false，浏览器将不会继续提交form，
+// 这种情况通常对应用户输入有误，提示用户错误信息后终止提交form。
+</script>
+
+</body>
+</html>

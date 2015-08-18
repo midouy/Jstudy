@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>操作表单</title>
+    <script type="text/javascript" src="../jQuery/imports/jQuery.js"></script>
+
+</head>
+<body>
+
+    <div>
+        请输入 : <input id="email" type="text" value="837291157@qq.com">
+
+    </div>
+
+    <input type="radio" name="weekday" id="sunday" value="2">
+
+    <button id="press">显示</button>
+
+    <!--HTML5控件-->
+
+    <input type="date">
+
+
+    <input type="datetime-local">:
+
+
+    <input type="color">:
+
+
+    <script type="text/javascript">
+
+
+
+        /********************* HTML 表单 ************************/
+//        文本框，对应的<input type="text">，用于输入文本；
+//
+//        口令框，对应的<input type="password">，用于输入口令；
+//
+//        单选框，对应的<input type="radio">，用于选择一项；
+//
+//        复选框，对应的<input type="checkbox">，用于选择多项；
+//
+//        下拉框，对应的<select>，用于选择一项；
+//
+//        隐藏文本，对应的<input type="hidden">，用户不可见，但表单提交时会把隐藏文本发送到服务器
+
+        /*********** 获取表单值 ***********/
+        //只适用于文本框, 下拉框, password 和 隐藏文本
+        $(document).ready(function(){
+            $("#press").click(function(){
+                alert(document.getElementById("email").value);
+            });
+        });
+        //单选框和复选框使用checked属性
+
+     /******************* HTML5 控件 *******************/
+
+
+
+
+
+    </script>
+</body>
+</html>
