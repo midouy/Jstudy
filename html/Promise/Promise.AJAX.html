@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>promise Ajax</title>
+
+
+</head>
+<body>
+
+    <textarea id="area"></textarea>
+
+<script type="text/javascript">
+
+    /************************* 使用Promise对象处理AJAX异步通信 *************************/
+    function ajax(method,url,data){//返回一个Promise对象
+        var request = new XMLHttpRequest();
+        return new Promise(function(resolve, reject){
+            request.onreadystatechange = function(){
+                if(request.readyState===4){
+                    if(request.status===200)
+                        resolve(request.responseText);
+                    else
+                        reject(request.status);
+                }
+                else {
+
+                }
+            }
+            request.open(method,url);
+            request.send(data);
+        });
+    }
+
+    var p = ajax("Get" , "/Jstudy/html/basic/control.html");
+    p.then(function(text){
+        document.getElementById("area").innerHTML = text;
+    }).catch(function(status){
+        document.getElementById("area").innerHTML = "ERROR"+status;
+    });
+
+
+
+
+</script>
+</body>
+</html>

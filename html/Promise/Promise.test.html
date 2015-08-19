@@ -2,7 +2,67 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Promise 多线程执行? </title>
+
+    <script type="text/javascript">
+
+        /*********************** Promise对象 ************************/
+
+        // 1. 定义一个承诺执行的函数, 这个函数一定要包含resolve 和 reject 两个参数
+        // 并且这两个参数都是函数类型,
+        var promised = function(resolve, reject){
+            //promised方法中通常都会包含用setTimeout(function, times)方法
+            //用来设定在多长时间之后执行function
+            //并通过运行结果进行逻辑判断, 来决定运行resolve还是reject
+            //resolve和reject方法的参数都是Promise的内部传递的
+           if(true)
+               resolve("then block will run");
+               // 如果resolve函数执行了, 那么之后的流程中会执行then方法
+            else
+               reject("catch block will run");
+               //如果reject函数执行了, 那么之后的流程会执行catch方法
+        };
+
+
+        //2. 定义一个thenFunction方法作为Promise对象的then()方法的参数
+        // 这个方法会在promised方法内执行了resolve之后执行
+        var thenFunction = function(){
+            console.log("then run!");
+        };
+
+        //3. 定义一个catchFunction方法, 作为Promise对象的catch()方法的参数
+        // 这个方法会在promised方法内执行了reject之后执行
+        var catchFunction = function(){
+            console.log("catch run!");
+        };
+
+        var p = new Promise(promised);//这句代码会使promised()方法执行
+
+        p.then(thenFunction).catch(catchFunction);
+        //如果promised内执行了resolve, 那么then()就会执行
+        //如果promised内执行了reject, 那么catch()就会执行.
+
+        /************************ 一种常使用的promise对象定义 ************************/
+
+        new Promise(function(resolve, reject){
+            setTimeout(function(){//延迟5秒运行resolve()
+                if(true)
+                    resolve("haha");//这里传递的参数, 将作为then()方法的参数函数的参数进行使用
+                else
+                    reject();
+            },5000);
+        }).then(function(msg){
+                    console.log("new then run!"+msg);//这里的msg的值就是'haha', 是从resolve方法中传递来的
+        }).then(function(){
+                    console.log("another then run!");
+        }).catch(function(){
+                    console.log("new catch run!");
+        });
+        //如果之前的resolve执行了, 那么所有的then()都会依次执行,
+        //如果之前catch执行了, 那么只会执行一个catch()
+
+
+    </script>
 </head>
 <body>
 
