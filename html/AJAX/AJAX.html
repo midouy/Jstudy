@@ -3,8 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>AJAX</title>
+
 </head>
 <body>
+    <textarea id="text-area" >nothing!</textarea>
 
+
+    <script type="text/javascript">
+
+        function success(text)
+        {
+            document.getElementById("text-area").value=text;
+        }
+
+        function fail(code)
+        {
+            document.getElementById("text-area").value="ERROR code : "+code;
+        }
+
+        var request = new XMLHttpRequest();
+
+        request.onreadystatechange = function(){
+
+            if(request.readyState===4)
+            {
+                if(request.status===200)
+                    return success(request.responseText);
+                else
+                    return fail(request.status);
+            }
+            else
+            {
+
+            }
+        }
+
+        request.open('GET','/Jstudy/html/basic/control.html');
+        request.send();
+
+        alert("request send, waiting response....");
+    </script>
 </body>
 </html>

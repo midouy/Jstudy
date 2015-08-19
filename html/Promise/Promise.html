@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Promise JS Threads</title>
+
+    <script type="text/javascript">
+
+
+        //
+        function callback()
+        {
+            console.log("Done");
+        }
+        console.log("before...");
+
+        setTimeout(callback,1000); //等待一秒钟之后执行
+
+        console.log("after!");
+
+        /**
+         * before...
+         * after!
+         * Done //并非单线程执行!
+         * */
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
