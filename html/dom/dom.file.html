@@ -6,7 +6,10 @@
 </head>
 <body>
 
-    <input type="file">
+    <form method="get"  onsubmit="return checkFileName();">
+        <input type="file" id = "file" name="update">
+        <input type="submit">提交
+    </form>
 
     <script type="text/javascript">
 
@@ -15,7 +18,38 @@
 
     // 出于安全考虑，浏览器只允许用户点击<input type="file">来选择本地文件，
     // 用JavaScript对<input type="file">的value赋值是没有任何效果的。
-    // 当用户选择了上传某个文件后，JavaScript也无法获得该文件的真实路径
+    // 当用户选择了上传某个文件后，JavaScript也无法获得该文件的真实路
+
+
+     function checkFileName(){
+
+         var file = document.getElementById("file");
+
+         var dir = file.value;
+
+         if(dir.endsWith('.jpg'))
+            return true;
+         else
+         {
+             alert("you should only upload jpg files!");
+             return false;
+         }
+
+     }
+    String.prototype.endsWith=function(tar){
+        if(!(typeof tar==="string")||this.length<tar.length)
+            return false;
+        else
+        {
+            for(var i = 0; i<tar.length;i++)
+            {
+                if(!(tar.charAt(tar.length-1-i)===this.charAt(this.length-1-i)))
+                    return false;
+            }
+            return true;
+        }
+    }
+
 
 
 
