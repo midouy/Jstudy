@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多任务并行异步处理</title>
+</head>
+<body>
+
+    <script type="text/javascript">
+
+        var p1 = new Promise(function(resolve,reject){
+            setTimeout(resolve,1500,'p1Done');
+        });
+        var p2 = new Promise(function(resolve,reject){
+            setTimeout(resolve,2000,'p2Done');
+        });
+
+        Promise.all([p1,p2]).then(function(result){
+            console.log(result);
+        });
+
+        
+
+
+    </script>
+
+</body>
+</html>
