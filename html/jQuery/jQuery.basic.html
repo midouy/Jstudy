@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery 基础</title>
+    <script type="text/javascript" src="imports/jQuery.js"></script>
+
+</head>
+<body>
+
+    <p id="p">look at me !</p>
+
+    <script type="text/javascript">
+
+        var p1 = document.getElementById("p");
+        var p2 = $('#p');
+
+        alert(typeof p2);
+        alert(typeof p1);
+        //jQuery对象是高度封装的一个对象, 功能十分强大
+
+        for(var name in p2)
+        {
+            alert(p2[name]);///好多内容啊....
+        }
+
+
+
+    </script>
+</body>
+</html>
