@@ -3,14 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <title>jQuery选择器</title>
-
+    <script type="text/javascript" src="imports/jQuery.js"></script>
     <script type="text/javascript">
 
-        window.open("http://www.baidu.com");
+        //window.open("http://www.baidu.com");
+        $(function(){
+            var javas = $('.java');
+            var tech = $('#techDIV');
+            var techx = $('#techDIV');
+            var idea = $('li.Java');
+            var ideax = $('.ide .Java');
+            var ideaxx = $('.ide>.Java');
+
+            var js = $('[name="js_name"]');
+            var jsx = $('.die.js');
+            var jsxx = $('ul.ide>li:nth-child(1)');
+
+
+
+            alert("run!");
+            //tech.hide();
+            alert(ideaxx===ideax);//false
+            //虽然他们找到的是同一个jQ对象, 但是并不一样
+            alert(tech===techx);//false
+            //即使是通过ID选取的同一个标签, 他们的jQ对象也不是一个对象
+            alert(tech.__proto__===techx.__proto__);//true
+            //他们的原型都是一样的
+            alert(tech.__proto__===js.__proto__);//true
+
+            ideax.css('color','blue');
+            ideaxx.css('color','red');
+        });
 
     </script>
 </head>
 <body>
+
+    <div id="techDIV" class="tech">
+        <ul class="lang">
+            <li class="js">JavaScript</li>
+            <li class="Java">Java</li>
+            <li class="python">python</li>
+        </ul>
+        <ul class="ide">
+            <li class="js" name="js_name">webStorm</li>
+            <li class="Java">IDEA</li>
+            <li class="python">pyCharm</li>
+        </ul>
+    </div>
+
+    <div id="bookDIV" class="book">
+        <ul class="story">
+            <li id="bejing">北京故事</li>
+            <li id="chifeng">赤峰故事</li>
+        </ul>
+    </div>
 
 </body>
 </html>
