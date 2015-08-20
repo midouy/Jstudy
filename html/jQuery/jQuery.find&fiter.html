@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery查找和过滤</title>
+    <script type="text/javascript" src="imports/jQuery.js"></script>
+    <script type="text/javascript">
+
+        /******** 通过已经获取到的jQuery对象进行查找和过滤 ********/
+
+//        通常情况下选择器可以直接定位到我们想要的元素，但是，当我们拿到一个jQuery对象后，还可以以这个对象为基准，进行查找和过滤。
+//
+//        最常见的查找是在某个节点的所有子节点中查找，使用find()方法，它本身又接收一个任意的选择器。例如如下的HTML结构：
+
+        $(function(){//$(document).ready(function(){
+
+            alert('mark!');
+            //使用find()方法在jQuery对象的子嗣内进行查找
+            var ul = $('ul.lang');// 获取<ul>
+            var dy = ul.find('.dy'); // JavaScript, Python, Scheme
+            var swift = ul.find('#swift'); // Swift
+            var haskell = ul.find('[name=haskell]'); //Haskell
+
+            //使用parent()方法在jQuery对象的祖先内进行查找
+            var swf = $('#swift');
+            var swf_parent = swf.parent(); //获取swf的上一层双亲, <ul>
+            var swf_ancestor = swf.parent('.red'); //沿着swf的上层一次寻找, 找到所有的red class标签
+
+            //使用prev() 和 next() 在jQuery对象的兄弟间进行查找
+            var sf = $('#swift');
+            var sch = sf.next(); //Scheme
+            var schx = sf.next('[name=haskell]'); //向下查找 属性为name=haskell的标签
+
+            var py = sf.prev();// 前一个标签 Python
+            var js = sf.prev('.js') //向前查找class = js的标签
+
+            //alert(js.constructor);
+        });
+
+//        和函数式编程的map、filter类似，jQuery对象也有类似的方法。
+
+        $(function(){
+
+            //使用get()方法获取jQuery对象中的DOM节点(以数组形式返回)
+            var ulxx = $('ul.lang');
+            var arrx = ulxx.get();
+
+            alert(arrx.constructor===Array);//Array
+
+            //使用filter()方法, 过滤掉不符标准的节点
+            var lis = $('ul.lang li'); //获取所用的li
+            var dys = lis.filter('.dy');//<li>中所有的.dy
+            //dys.css('color','red');
+
+            //以参数函数的形式使用filter()
+            var js = lis.filter(function(){
+                //注意, 这里的this绑定的是jQuery对象内部的DOM节点!
+                //而这个函数也是针对每一个DOM节点运行的,
+                //如果返回true, 那么就留下来
+                return this.innerHTML==='JavaScript';
+            });
+            //js.css('color','red');
+
+            //使用map()方法, 对jQuery对象内的DOM节点进行操作
+            var uls = $('ul.lang li');
+            var arr = uls.map(function(){//返回一个新的jQuery对象
+                return this.innerHTML;
+            }).get();//通过get对象获取内部节点数组 ['JavaScript', .... ]
+            alert(uls.constructor);//uls对象是不会变的
+            alert(arr.constructor);
+            alert(arr.constructor===uls.constructor);
+            alert(arr===uls);
+
+            //如果jQuery对象包含了不止一个DOM节点, 那么就可以用first() , last() slice()方法获取相应的jQuery节点
+            var langs = $('ul.lang li');
+            var jsxxx = langs.first();
+            var hsk = langs.last();
+            var sub = langs.slice(2,4);//包含头不包含尾
+
+        });
+
+
+
+
+    </script>
+</head>
+<body>
+<!-- HTML结构 -->
+<ul class="lang">
+    <li class="js dy">JavaScript</li>
+    <li class="dy">Python</li>
+    <li id="swift">Swift</li>
+    <li class="dy">Scheme</li>
+    <li name="haskell">Haskell</li>
+</ul>
+</body>
+</html>
