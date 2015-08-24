@@ -6,7 +6,45 @@
     <script type="text/javascript" src="imports/jQuery.js"></script>
     <script type="text/javascript">
 
+    $(function(){
 
+        /********** 获取文本和HTML ***********/
+        //text()方法和html()方法
+        alert($('#test-ul .js').text());
+        alert($('#test-ul [name=book]').html());// Java&amp; JavaScript
+        alert($('#test-ul [name=book]').text()); //Java JavaScript
+        //不清楚这两个函数肚的区别, text不支持特殊字符?
+
+        /********** 修改文本和HTML **********/
+        //对text()和html()传递参数就可以进行文本修改
+        var js = $('#test-ul .js');
+        var text = $('#test-ul [name=book]');
+        js.text('JavaScript');
+        alert(js.text());
+
+        text.html('Python');
+        alert(text.html());
+
+        /************ 修改CSS ************/
+        //JQUERY_OBJECT.css('property''); 获取CSS属性值
+        //JQUERY_OBJECT.css('property','value'); 修改CSS属性
+        alert(js.css('color'));
+        js.css('color','red');
+        js.css('color','black');
+        $('.ul').css('color','red'); //将ul的颜色设置为红色, 它的子嗣如果没有color属性, 那么也被设置为红色
+
+        /***********修改 class **********/
+        //JQUERY_OBJECT.hasClass('className');//判断是否具有某个class属性
+        //JQUERY_OBJECT.addClass('className'); // 增加一个Class
+        //JQUERY_OBJECT.removeClass('className');// 移除一个Class
+
+        $('[name=book]').addClass('ul');
+        alert($('[name=book]').hasClass('ul'));//true
+        $('[name=book]').removeClass('ul');
+
+
+
+    });
 
 
 
@@ -16,6 +54,10 @@
     </script>
 </head>
 <body>
+    <ul id="test-ul" class="ul">
+        <li class="js">JS</li>
+        <li name="book">Java&amp; JavaScript</li>
+    </ul>
 
 </body>
 </html>

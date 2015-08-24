@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改dom结构</title>
+    <script type="text/javascript" src="imports/jQuery.js"></script>
+
+    <script type="text/javascript">
+
+        $(function(){
+
+            /******** 使用append()添加DOM子节点 ********/
+            //append()方法用于在后边添加一个子节点
+            //1. 直接添加html文本
+            $('ul').append('<li><span>Haskell</span></li>');
+
+            //2. 添加dom对象
+            var ps = document.createElement('li');
+            ps.innerHTML = '<span>Pascal</span>';
+            $('#test-div>ul').append();
+
+            //3. 添加jQuery对象
+            $('#test-div>ul').append($('#cpp'));//会把原来的节点删除
+
+
+            /*************** 使用preappend添加子节点 ***************/
+            //preappend用于在前边添加一个子节点, 用法和append相同
+
+            /******** 使用 before() 和 after() 添加一个兄弟节点 ********/
+            var js = $('#js');
+            js.before($('#cpp2'));
+            js.after($('#cpp3'));
+
+            /************ 使用 remove() 方法删除节点 ************/
+            //remove()方法是用于删除jQuery对象中的所有的dom节点的
+            //也就说 '谁调用, 删除谁'
+           // $('li').remove();//将<li>全部删除
+
+            //也可以进行指定删除
+            $('li').remove('#cpp');//删除id为 cpp的<li>
+
+        });
+
+
+
+
+    </script>
+</head>
+<body>
+
+<div id="test-div">
+    <ul>
+        <li id="js"><span>JavaScript</span></li>
+        <li><span>Python</span></li>
+        <li><span>Swift</span></li>
+    </ul>
+</div>
+<div id="test-div2">
+    <ul>
+        <li id="cpp"><span>CPP</span></li>
+        <li id="cpp2"><span>CPP2</span></li>
+        <li id="cpp3"><span>CPP3</span></li>
+    </ul>
+</div>
+
+
+</body>
+</html>
