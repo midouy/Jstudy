@@ -2,9 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title> jQuery事件 </title>
+    <script type="text/javascript" src="imports/jQuery.js"></script>
+    <script type="text/javascript" >
+
+        $(function() {
+            /********* 绑定事件的两种方式 *********/
+            //使用 on() 方法进行绑定
+            $('#press').on('click',function(){
+               $('p').html("hello!");
+            });
+
+            //使用.click方式绑定
+            $('#press2').click(function () {
+                $('p').hide('slow');
+                $('p').show('slow');
+            });
+
+        });
+
+
+
+    </script>
 </head>
 <body>
 
+    <p>nothing!</p>
+    <button id="press">press me</button>
+    <button id="press2">hide</button>
 </body>
 </html>
