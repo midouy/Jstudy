@@ -10,12 +10,33 @@
         alert(window.jQuery===$);
         alert($);
 
+        $(function(){
+           /****************** jQuery对象和DOM对象之间的转换 ********************/
+            var ul_jQ = $('#test-ul');
+            var ul_dom = document.getElementById('test-ul');
+
+            // jQuery_OBJECT --> DOM
+            var o1 = ul_jQ[0];
+            alert('o1 : '+o1.constructor);
+
+            // DOM --> jQuery_OBJECT
+            var o2 = $(ul_dom);
+            alert('o2 : '+o2.constructor);
+        });
+
     </script>
 
 </head>
 <body>
 
     <p id="p">look at me !</p>
+
+    <ul id="test-ul">
+        <li>
+            test li!
+        </li>
+    </ul>
+
 
     <script type="text/javascript">
 

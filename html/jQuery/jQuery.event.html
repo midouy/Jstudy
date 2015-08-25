@@ -18,8 +18,112 @@
                 $('p').hide('slow');
                 $('p').show('slow');
             });
+            /*********** 常见事件 ***********/
+            //鼠标事件
+//            click: 鼠标单击时触发；
+//            dblclick：鼠标双击时触发；
+//            mouseenter：鼠标进入时触发；
+//            mouseleave：鼠标移出时触发；
+//            mousemove：鼠标在DOM内部移动时触发；
+//            hover：鼠标进入和退出时触发两个函数，相当于mouseenter加上mouseleave。
+
 
         });
+
+        $(function(){ //鼠标事件绑定
+            $('#click').click(function(){
+                $('#click').css('color','red');
+            });
+
+            $('#dbclick').dblclick(function(){
+                $('#dbclick').css('color','red');
+            });
+
+            $('#mouseenter').mouseenter(function(){
+                $('#mouseenter').css('color','red');
+            });
+
+            $('#mouseleave').mouseleave(function(){
+                $('#mouseleave').css('color','red');
+            });
+
+            //hover其实绑定就是两个函数
+            $('#hover').hover(function(){
+                $('#hover').css('color','red');
+            },function(){
+                $('#hover').css('color','blue');
+            });
+        });
+
+//        键盘事件仅作用在当前焦点的DOM上，通常是<input>和<textarea>。
+//
+//        keydown：键盘按下时触发；
+//        keyup：键盘松开时触发；
+//        keypress：按一次键后触发。
+        $(function(){//键盘事件绑定
+
+            $('#keydown').keydown(function(){
+                $('#keydown').css('color','red');
+            });
+
+            $('#keyup').keyup(function(){
+                $('#keyup').css('color','red');
+            });
+
+            $('#keypress').keypress(function(){
+                $('#keypress').css('color','blue');
+            });
+        });
+
+//        其他事件
+//
+//        focus：当DOM获得焦点时触发；
+//        blur：当DOM失去焦点时触发；
+//        change：当<input>、<select>或<textarea>的内容改变时触发；
+//        submit：当<form>提交时触发；
+//        ready：当页面被载入并且DOM树完成初始化后触发。
+
+        /************* 事件参数 *************/
+
+        $(function(){
+
+            $('#testMouseMoveDiv').mousemove(function(e){
+                $('#text').text(
+                        'x : ' + e.pageX+' , y : '+ e.pageY
+                );
+            });
+
+
+            /*********** 取消绑定 ***********/
+            //使用off()方法解除事件绑定
+            //注意, 如果想解除某个事件响应, 那么这个响应函数就不应该是匿名函数,
+            // 否则只能通过解除所有响应的方式进行解除
+            $(function(){
+
+                function hello (){
+                  alert('hello');
+                };
+
+
+                $('#click').click(hello);
+
+                window.setTimeout(function(){ //十秒钟之后解除绑定
+                    $('#click').off('click',hello);
+                    // $('#click').off('click'); 解除 click事件 的所有响应
+                    //$('#click').off(); 解除这个对象的所有 事件-响应 的绑定
+
+                },10000);
+
+            });
+
+        });
+
+        /************ 事件触发条件 ************/
+        //jQuery的事件触发只识别用户的鼠标键盘等外部操作,
+        // 如果通过js代码想要触发事件响应只能使用JQUERY_OBJECT.trigger('event_method_name');
+
+        $("#click").trigger('click');
+
 
 
 
@@ -30,5 +134,27 @@
     <p>nothing!</p>
     <button id="press">press me</button>
     <button id="press2">hide</button>
+
+    <ul id="show">
+
+    </ul>
+    <ul id="mouse_event">
+        <li id="click">单击</li>
+        <li id="dbclick">双击</li>
+        <li id="mouseenter">鼠标进入</li>
+        <li id="mouseleave">鼠标移出</li>
+        <li id="hover">鼠标滑过</li>
+    </ul>
+
+    <ul id="key_event">
+        <li id="keydown">键盘按下</li>
+        <li id="keyup">键盘按下</li>
+        <li id="keypress">键盘按下</li>
+    </ul>
+
+    <p>mouse move : <span id="text"> x :     y :</span></p>
+
+    <div id="testMouseMoveDiv" style="display: block; width: 300px; height: 120px; border: 1px solid #ccc;">在此区域移动鼠标试试</div>
+
 </body>
 </html>
