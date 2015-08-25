@@ -2,9 +2,118 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>jQuery动画</title>
+    <script type="text/javascript" src="imports/jQuery.js"></script>
+
+    <script type="text/javascript">
+
+//        用JavaScript实现动画，原理非常简单：我们只需要以固定的时间间隔（例如，0.1秒），每次把DOM元素的CSS样式修改一点（例如，高宽各增加10%），看起来就像动画了。
+//
+//        但是要用JavaScript手动实现动画效果，需要编写非常复杂的代码。如果想要把动画效果用函数封装起来便于复用，那考虑的事情就更多了。
+//
+//        使用jQuery实现动画，代码已经简单得不能再简化了：只需要一行代码！
+
+        /****** 标签的显示与隐藏 ******/
+        $(function(){
+            var img =
+                    //$('img');qqf
+                    $('#imgs');
+            $('#show').click(function(){
+                img.show('slow');
+            });
+
+            $('#hide').click(function(){
+                img.hide('slow');
+            });
+
+            $('#toggle').click(function(){
+                img.toggle('slow');
+            });
+
+            $('#slideUp').click(function(){
+                img.slideUp('slow');
+            });
+
+            $('#slideDown').click(function(){
+                img.slideDown('slow');
+            });
+
+            $('#slideToggle').click(function(){
+                img.slideToggle('slow');
+            });
+
+            $('#fadeIn').click(function(){
+                img.fadeIn('slow');
+            });
+
+            $('#fadeOut').click(function(){
+                img.fadeOut('slow');
+            });
+
+            $('#fadeToggle').click(function(){
+                img.fadeToggle('slow');
+            });
+
+
+            /*************** 自定义动画 ****************/
+            //JQUERY_OBJECT.animate(STYLE_OPTION, TIMES, CALLBACK_METHOD);
+            var options = {
+                opacity:0.5,
+                width:'256px',
+                height:'256px'
+            };
+
+            var times = 3000;
+
+            var callBack = function(){
+                alert('动画执行完毕!');
+            }
+
+            $('#animate').click(function(){
+                img.animate(options,times,callBack);
+            });
+
+            /*************** 串行动画 ***************/
+            //使用delay(TIMES)暂停动画执行
+            $('#show_hide').click(function(){
+               // img.show('slow').hide('slow'); //不间断的执行
+                img.show('slow').delay(1000).hide('slow'); //停顿1秒再执行
+            });
+
+        });
+
+
+
+
+    </script>
 </head>
 <body>
+    <div id="buttons" style="height: 60px">
+
+        <button id="show">show</button>
+        <button id="hide">hide</button>
+        <button id="toggle">toggle</button>
+
+        <b/>
+        <button id="slideUp">slideup</button>
+        <button id="slideDown">slidedown</button>
+        <button id="slideToggle">slideToggle</button>
+
+        <b/>
+        <button id="fadeIn">fadeIn</button>
+        <button id="fadeOut">fadeOut</button>
+        <button id="fadeToggle">fadeToggle</button>
+
+        <button id="animate">animate</button>
+
+        <button id="show_hide">show&hide</button>
+
+    </div>
+
+    <div id="imgs">
+        <img src="../imgs/qq.jpg">
+    </div>
+
 
 </body>
 </html>
