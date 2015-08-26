@@ -5,6 +5,7 @@
     <title> jQuery AJAX 通信</title>
 
     <script type="text/javascript" src="imports/jQuery.js"></script>
+    <script type="text/javascript" src="imports/jquery.form.js"></script>
 
     <script type="text/javascript">
 
@@ -56,7 +57,7 @@
             ).done(function(data){
                     //alert(data.constructor); //此时还是对象
                     ajaxLog("成功接收到消息 : "+JSON.stringify(data));
-                        alert(data.name);//xiaoming
+                        //alert(data.name);//xiaoming
             }).fail(function(xhr,status){
                     ajaxLog("失败 : "+xhr.status+", 原因 : "+status);
             }).always(function(){
@@ -66,13 +67,77 @@
 
         });
 
+        /*************** 一些封装好的ajax方法 ***************/
+
+//        对常用的AJAX操作，jQuery提供了一些辅助方法。由于GET请求最常见，所以jQuery提供了get()方法，可以这么写：
+
+//        第二个参数如果是object，jQuery自动把它变成query string然后加到URL后面，实际的URL是：
+
+//        /path/to/resource?name=Bob%20Lee&check=1
+
+//        这样我们就不用关心如何用URL编码并构造一个query string了。
+        /** get() **/
+        var jQXHRGet = $.get('/Jstudy/html/jQuery/JSONS/xiaomingJSON.html', {
+            name:'bob',
+            age:20
+        });
+
+        //post()和get()类似，但是传入的第二个参数默认被序列化为application/x-www-form-urlencoded：
+        var jQXHRPost = $.post('/Jstudy/html/jQuery/JSONS/xiaomingJSON.html', {
+            name:'bob',
+            age:20
+        });
+
+        //由于JSON用得越来越普遍，所以jQuery也提供了getJSON()方法来快速通过GET获取一个JSON对象：
+        var jQXHRJSON = $.getJSON('/Jstudy/html/jQuery/JSONS/xiaomingJSON.html', {
+            name:'bob',
+            age:20
+        }).done(function(data){
+            //alert(data.constructor);//object
+           // alert(data.name);//xiaoming
+        });
 
 
+        //1. 引入jQuery.form.js
+        //2. 使用ajaxForm()方法 对<form>提交格式进行设置
+        //3. 使用JQUERY_OBJECT.send()方法进行ajax提交
+        $(function(){
+            $('input[type=button]').click(function(){
+                var options = {
+                    url:'/Jstudy/html/jQuery/JSONS/xiaomingJSON.html',
+                    methed:'get',
+                    dataType:'json',
+                    success:function(data){
+                        if (data) {
+                            var status = data.status;
+                            if (status == 1) {
+                                alert("操作成功");
+                            } else {
+                                alert("发生错误，错误代码是"+status);
+                            }
+                        } else {
+                            alert("程序发生错误");
+                        }
+                    }
+                };
+
+                $('#test').ajaxForm(options);
+                $('#test').submit();
+            });
+        });
 
     </script>
 </head>
 <body>
 
     <textarea id = "text" style="height:500px ;width: 600px">返回结果</textarea>
+
+    <div>
+        <form id="test">
+            name : <input type="text">
+            age: <input type="text">
+            <input type="button" value="提交">
+        </form>
+    </div>
 </body>
 </html>
