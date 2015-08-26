@@ -2,9 +2,49 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>jQuery扩展 </title>
+    <script type="text/javascript" src="imports/jQuery.js">
+    </script>
+
+    <script type="text/javascript">
+
+        /********* 使用$.fn对jQuery进行扩展 *********/
+        // 1.为 $.fn 添加新的属性方法;
+        // 2.为函数增加相应的参数以及相应默认值
+        // 3. return this; 使得扩展方法可以使用链式处理
+        $.fn.highLight = function(options){ //扩展一个高亮方法
+
+            //对于默认值的处理，我们用了一个简单的&&和||短路操作符，总能得到一个有效的值。
+            var bgcolor = options&&options.bgColor||'#fffceb';
+            var color = options&&options.color||'#d85030';
+            this.css('backgroundColor',bgcolor).css('color',color);
+            return this;
+        };
+
+        $(function(){//测试一下
+           $('#high').click(function(){
+               //$('#text').highLight(); //用户不输入参数的情况
+               $('#text').highLight({
+                   bgColor:'red',
+                   color:'white'
+               });//用户传递参数
+           });
+        });
+
+        /****************/
+
+
+
+
+
+
+
+    </script>
 </head>
 <body>
+
+<p id="text">高亮文本</p>
+<button id="high">标记</button>
 
 </body>
 </html>
