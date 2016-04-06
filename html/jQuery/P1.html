@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="imports/jQuery.js"></script>
+</head>
+<body>
+<span class="name">张三丰</span>
+<span class="name">赵四</span>
+</body>
+<script>
+    $(function(){
+       test();
+    });
+    function test(){
+        $('.name').each(function(){
+            var name = $(this).html();
+            if(name.length==2){
+                name = name.substring(0,1)+"&nbsp;&nbsp;&nbsp;&nbsp;"+name.substring(1);
+                $(this).html(name)
+            }
+        });
+    }
+</script>
+</html>
