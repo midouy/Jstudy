@@ -6,9 +6,10 @@
     <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
     <meta charset="utf-8">
     <!-- 包含 bootstrap 样式表 -->
-    <link rel="stylesheet" href="import/css/bootstrap.min.css">
-    <script type="text/javascript" src="import/js/jQuery.js"></script>
-    <script type="text/javascript" src="import/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="import/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="import/font-awesome/css/font-awesome.min.css">
+    <script type="text/javascript" src="import/bootstrap/js/jQuery.js"></script>
+    <script type="text/javascript" src="import/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
 <nav class="nav navbar-default navbar-fixed-top" role="navigation">
@@ -50,7 +51,7 @@
 <div class="container">
     <!--字体图标就是使用<span>, 通过设置class使用不同的字体图标-->
     <!--字体图标查看列表 : http://www.runoob.com/try/demo_source/bootstrap3-glyph-icons.htm-->
-    <h1 class="page-header"><span class="glyphicon glyphicon-user"></span> 用户登录</h1>
+    <h1 class="page-header"><span class="fa fa-user"></span> 用户登录</h1>
     <form class="form-horizontal">
         <div class="form-group">
             <div class="col-md-5">
@@ -69,6 +70,10 @@
         </div>
     </form>
 </div>
-<div style="height: 1500px;"></div>
+<div style="height: 1500px;">
+    <!--使用font-awesome-->
+    <span class="fa fa-camera-retro"></span>
+    <span class="fa fa-mixcloud"></span>
+</div>
 </body>
 </html>
