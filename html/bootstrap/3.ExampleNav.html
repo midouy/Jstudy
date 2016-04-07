@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap 实例-导航栏</title>
+    <!-- 包含头部信息用于适应不同设备 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <!-- 包含 bootstrap 样式表 -->
+    <link rel="stylesheet" href="import/css/bootstrap.min.css">
+    <script type="text/javascript" src="import/js/jQuery.js"></script>
+    <script type="text/javascript" src="import/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="nav navbar-default" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="#" class="navbar-brand">
+                <img src="../imgs/qq.jpg" style="height: 50px; margin-top: -15px;"/>
+            </a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">首页</a></li>
+            <li><a href="#">囧文</a></li>
+            <li><a href="#">文章</a></li>
+        </ul>
+        <div class="navbar-form">
+            <input type="text" class="form-control" placeholder="请输入关键字"/>
+            <button class="btn btn-group">搜  索</button>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <h1>用户登录</h1>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-5">
+                <input type="text" class="form-control" placeholder="用户名/email">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-5">
+                <input type="password" class="form-control" placeholder="密码">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-5">
+                <button class="btn-group">登录</button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>
